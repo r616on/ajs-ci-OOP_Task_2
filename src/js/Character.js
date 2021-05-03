@@ -21,12 +21,16 @@ export default class Character {
       this.level += 1;
       this.attack += (this.attack / 100) * 20;
       this.defence += (this.defence / 100) * 20;
+    } else {
+      throw new Error('Жизней меньше 0 невозможно увеличить уровень');
     }
   }
 
   damage(points) {
     if (this.health >= 0) {
       this.health -= points * (1 - this.defence / 100);
+    } else {
+      throw new Error('Жизней  0 невозможно отнять больше');
     }
   }
 }
